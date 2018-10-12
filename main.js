@@ -13,6 +13,15 @@ UXComponent.State = {
 	HAS_ICON: 16
 };
 
+// Mapping
+UXComppnent.StateClassName = {
+	'1': 'item-disabled',
+	'2': 'item-focused',
+	'4': 'item-hovered',
+	'8': 'item-active',
+	'16': 'item-hasicon'
+};
+
 UXComponent.prototype.getClassName = function () {
 	
 };

@@ -28,7 +28,7 @@ UXComponent.prototype.getClassName = function () {
 	Object.keys(UXComponent.State).forEach(function(stateName){
 		var state = UXComponent.State[stateName];
 		if (Boolean(this.state & UXComponent.State[stateName])) {
-			this.element.classList.add(UXComponent.StateClassName[stateName]);
+			this.element.classList.add(UXComponent.StateClassName[state]);
 		}
 	}, this);
 };

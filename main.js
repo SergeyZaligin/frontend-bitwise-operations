@@ -1,6 +1,8 @@
 'use strict';
 
 var UXComponent = function () {
+	this.state = UXComponent.State.DISABLED | UXComponent.State.HAS_ICON;
+
 	this.element = document.createElement('button');
 	this.getClassName();
 }
@@ -14,7 +16,7 @@ UXComponent.State = {
 };
 
 // Mapping
-UXComppnent.StateClassName = {
+UXComponent.StateClassName = {
 	'1': 'item-disabled',
 	'2': 'item-focused',
 	'4': 'item-hovered',
@@ -23,7 +25,12 @@ UXComppnent.StateClassName = {
 };
 
 UXComponent.prototype.getClassName = function () {
-	
+	Object.keys(UXComponent.State).forEach(function(stateName){
+		var state = UXComponent.State[stateName];
+		if (Boolean(this.state & UXComponent.State[stateName])) {
+			this.element.classList.add(UXComponent.StateClassName[stateName]);
+		}
+	}, this);
 };
 
 var myButton = new UXComponent();

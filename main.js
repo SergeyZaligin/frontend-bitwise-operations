@@ -7,8 +7,9 @@ var UXComponent = function () {
 	this.element.addEventListener('click', () => {
 		this.handleClick();
 		this.getClassName();
+		console.log(this.state);
 	});
-	console.log(this.state);
+	
 	
 	this.getClassName();
 }
@@ -31,7 +32,12 @@ UXComponent.StateClassName = {
 };
 
 UXComponent.prototype.handleClick = function () {
-	this.state = UXComponent.State.ACTIVE;
+	if (this.state != 8) {
+		this.state = UXComponent.State.ACTIVE;
+	} else {
+		console.log(this.state);
+	}
+	
 };
 
 UXComponent.prototype.getClassName = function () {

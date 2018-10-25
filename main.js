@@ -4,6 +4,12 @@ var UXComponent = function () {
 	this.state = UXComponent.State.DISABLED | UXComponent.State.HAS_ICON;
 
 	this.element = document.createElement('button');
+	this.element.addEventListener('click', () => {
+		this.handleClick();
+		this.getClassName();
+	});
+	console.log(this.state);
+	
 	this.getClassName();
 }
 
@@ -24,8 +30,12 @@ UXComponent.StateClassName = {
 	'16': 'item-hasicon'
 };
 
+UXComponent.prototype.handleClick = function () {
+	this.state = UXComponent.State.ACTIVE;
+};
+
 UXComponent.prototype.getClassName = function () {
-	Object.keys(UXComponent.State).forEach(function(stateName){
+	Object.keys(UXComponent.State).forEach(function(stateName) {
 		var state = UXComponent.State[stateName];
 		if (Boolean(this.state & UXComponent.State[stateName])) {
 			this.element.classList.add(UXComponent.StateClassName[state]);
@@ -33,6 +43,13 @@ UXComponent.prototype.getClassName = function () {
 	}, this);
 };
 
+
+
+	
+
 var myButton = new UXComponent();
+console.log(myButton);
+
 myButton.element.textContent = 'Кнопка';
 document.body.appendChild(myButton.element);
+
